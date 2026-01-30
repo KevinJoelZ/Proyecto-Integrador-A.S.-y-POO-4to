@@ -7,6 +7,8 @@
             <div class="hero-buttons">
                 <a href="planes.html" class="btn btn-primary">Comenzar Ahora</a>
                 <a href="servicios.html" class="btn btn-secondary">Ver Deportes</a>
+                <a href="rutinas.html" class="btn btn-primary" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">Mis Rutinas</a>
+                <a href="progresos.html" class="btn btn-secondary" style="background: #f97316; color: white;">Mi Progreso</a>
             </div>
             <div class="hero-stats">
                 <div class="stat">

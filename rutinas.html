@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Rutinas - DeporteFit</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Estilos específicos para la sección de rutinas */
+        .rutinas-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .rutinas-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e0e7ff;
+        }
+
+        .rutinas-header h1 {
+            font-size: 2rem;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .rutinas-header h1 i {
+            color: #2563eb;
+            font-size: 2.2rem;
+        }
+
+        .btn-nueva-rutina {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-nueva-rutina:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+        }
+
+        .filtros {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filtro-btn {
+            background: white;
+            border: 1.5px solid #e5e7eb;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            color: #4b5563;
+        }
+
+        .filtro-btn:hover, .filtro-btn.activo {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+        }
+
+        .rutinas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .rutina-card {
+            background: white;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .rutina-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-color: #2563eb;
+        }
+
+        .rutina-header {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .rutina-icono {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            border-radius: 0.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .rutina-titulo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.3rem;
+        }
+
+        .rutina-deporte {
+            font-size: 0.85rem;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .rutina-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .rutina-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-valor {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nivel-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+            width: fit-content;
+        }
+
+        .nivel-principiante {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .nivel-intermedio {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .nivel-avanzado {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .rutina-objetivo {
+            background: #f9fafb;
+            padding: 0.75rem;
+            border-left: 3px solid #2563eb;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+        }
+
+        .rutina-objetivo-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .rutina-objetivo-texto {
+            font-size: 0.95rem;
+            color: #1f2937;
+            font-weight: 500;
+        }
+
+        .estado-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .estado-activa {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .estado-pausada {
+            background: #fce7f3;
+            color: #831843;
+        }
+
+        .estado-completada {
+            background: #dbeafe;
+            color: #0c4a6e;
+        }
+
+        .progreso-visual {
+            margin: 1rem 0;
+        }
+
+        .progreso-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progreso-bar {
+            width: 100%;
+            height: 0.5rem;
+            background: #e5e7eb;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .progreso-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+            transition: width 0.3s ease;
+            border-radius: 9999px;
+        }
+
+        .rutina-footer {
+            border-top: 1px solid #e5e7eb;
+            padding: 1rem 1.5rem;
+            background: #f9fafb;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-rutina {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 0.4rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .btn-ver {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-ver:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-editar {
+            background: #f3f4f6;
+            color: #1f2937;
+            border: 1px solid #e5e7eb;
+        }
+
+        .btn-editar:hover {
+            background: #e5e7eb;
+        }
+
+        .btn-eliminar {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .btn-eliminar:hover {
+            background: #fecaca;
+        }
+
+        .no-rutinas {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border: 2px dashed #e5e7eb;
+            border-radius: 0.75rem;
+        }
+
+        .no-rutinas i {
+            font-size: 3rem;
+            color: #d1d5db;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .no-rutinas h3 {
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .no-rutinas p {
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2rem auto;
+            padding: 0;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.3s ease;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.4rem;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.4rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 4rem;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.4rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #1f2937;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.4rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        .stats-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-numero {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0.5rem 0;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .rutinas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rutinas-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .btn-nueva-rutina {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .filtros {
+                justify-content: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 1rem auto;
+            }
+
+            .rutina-info {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-dashboard {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .rutinas-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .stats-dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(180deg, #f7fbff 0%, #e3f0ff 100%);">
+    <!-- Header -->
+    <?php include_once __DIR__ . '/template/headercliente.php'; ?>
+
+    <!-- Sección de Rutinas -->
+    <div class="rutinas-container">
+        <!-- Header de Rutinas -->
+        <div class="rutinas-header">
+            <h1><i class="fas fa-dumbbell"></i>Mis Rutinas de Entrenamiento</h1>
+            <button class="btn-nueva-rutina" id="btnNuevaRutina">
+                <i class="fas fa-plus"></i>Nueva Rutina
+            </button>
+        </div>
+
+        <!-- Estadísticas Rápidas -->
+        <div class="stats-dashboard">
+            <div class="stat-card">
+                <i class="fas fa-running"></i>
+                <div class="stat-numero" id="totalRutinas">0</div>
+                <div class="stat-label">Rutinas Activas</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <div class="stat-numero" id="rutinasCompletadas">0</div>
+                <div class="stat-label">Completadas</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-line"></i>
+                <div class="stat-numero" id="progresoPromedio">0%</div>
+                <div class="stat-label">Progreso Promedio</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-fire"></i>
+                <div class="stat-numero" id="diasConsecutivos">0</div>
+                <div class="stat-label">Días Consecutivos</div>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filtros">
+            <button class="filtro-btn activo" data-filtro="todas">
+                <i class="fas fa-list"></i> Todas
+            </button>
+            <button class="filtro-btn" data-filtro="activa">
+                <i class="fas fa-play-circle"></i> Activas
+            </button>
+            <button class="filtro-btn" data-filtro="pausada">
+                <i class="fas fa-pause-circle"></i> Pausadas
+            </button>
+            <button class="filtro-btn" data-filtro="completada">
+                <i class="fas fa-check-circle"></i> Completadas
+            </button>
+        </div>
+
+        <!-- Grid de Rutinas -->
+        <div class="rutinas-grid" id="rutinasGrid">
+            <div class="no-rutinas">
+                <i class="fas fa-inbox"></i>
+                <h3>No tienes rutinas aún</h3>
+                <p>Crea tu primera rutina para comenzar a entrenar</p>
+                <button class="btn-nueva-rutina" id="btnNuevaRutinaEmpty">
+                    <i class="fas fa-plus"></i>Crear Rutina
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nueva/Editar Rutina -->
+    <div id="modalRutina" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitulo">Nueva Rutina</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="formRutina">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nombre de la Rutina *</label>
+                        <input type="text" id="nombre" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Deporte *</label>
+                            <select id="deporte" required>
+                                <option value="">Selecciona un deporte</option>
+                                <option value="Fitness">Fitness & Musculación</option>
+                                <option value="Running">Running & Maratón</option>
+                                <option value="Natación">Natación</option>
+                                <option value="Ciclismo">Ciclismo</option>
+                                <option value="Yoga">Yoga & Pilates</option>
+                                <option value="Fútbol">Fútbol</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nivel *</label>
+                            <select id="nivel" required>
+                                <option value="principiante">Principiante</option>
+                                <option value="intermedio" selected>Intermedio</option>
+                                <option value="avanzado">Avanzado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Objetivo *</label>
+                        <input type="text" id="objetivo" placeholder="Ej: Ganar fuerza, mejorar resistencia" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea id="descripcion" placeholder="Describe tu rutina..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Duración (semanas) *</label>
+                            <input type="number" id="duracionSemanas" min="1" max="52" value="4" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Frecuencia (días/semana) *</label>
+                            <input type="number" id="frecuenciaSemanal" min="1" max="7" value="3" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Fecha de Inicio *</label>
+                            <input type="date" id="fechaInicio" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Fecha de Fin</label>
+                            <input type="date" id="fechaFin">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="btnCancelarRutina">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar Rutina</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Detalle Rutina -->
+    <div id="modalDetalleRutina" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detalle de Rutina</h2>
+                <button class="close-btn" id="closeDetalleRutina">&times;</button>
+            </div>
+            <div class="modal-body" id="detalleContent">
+                <!-- Se llena con JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de Firebase -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBZoUGrSk3V-yFW6QHxXLeXQfPMgnYUeQo",
+            authDomain: "proyectoweb-fc2d2.firebaseapp.com",
+            projectId: "proyectoweb-fc2d2",
+            storageBucket: "proyectoweb-fc2d2.firebasestorage.app",
+            messagingSenderId: "508269230145",
+            appId: "1:508269230145:web:d183a7c70873785487eec0"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        let usuarioActual = null;
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                usuarioActual = user;
+                cargarRutinas();
+            }
+        });
+
+        // Hacer disponible globalmente
+        window.usuarioActual = () => usuarioActual;
+        window.cargarRutinas = cargarRutinas;
+    </script>
+
+    <!-- Script principal de rutinas -->
+    <script src="Scriptsindex/rutinas.js"></script>
+
+</body>
+</html>
