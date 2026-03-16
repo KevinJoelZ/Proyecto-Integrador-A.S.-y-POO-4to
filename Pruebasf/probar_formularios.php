@@ -160,10 +160,10 @@ echo "<hr>
         <div class='form-test'>
             <h4>✅ Formularios Verificados:</h4>
             <ul>
-                <li><strong>contacto.html</strong> → guardar.php → Tabla 'contactos'</li>
-                <li><strong>planes.html</strong> → guardar.php → Tabla 'contactos'</li>
-                <li><strong>entrenadores.html</strong> → guardar.php → Tabla 'contactos'</li>
-                <li><strong>servicios.html</strong> → guardar.php → Tabla 'contactos'</li>
+                <li><strong>contacto.php</strong> → guardar.php → Tabla 'contactos'</li>
+                <li><strong>planes.php</strong> → guardar.php → Tabla 'contactos'</li>
+                <li><strong>entrenadores.php</strong> → guardar.php → Tabla 'contactos'</li>
+                <li><strong>servicios.php</strong> → guardar.php → Tabla 'contactos'</li>
             </ul>
         </div>
         
@@ -180,12 +180,13 @@ echo "<hr>
         
         <div class='form-test'>
             <h4>🧪 Enlaces de Prueba:</h4>
-            <a href='contacto.html' class='btn'>Probar Formulario de Contacto</a>
-            <a href='planes.html' class='btn'>Probar Formulario de Planes</a>
-            <a href='entrenadores.html' class='btn'>Probar Formulario de Entrenadores</a>
-            <a href='servicios.html' class='btn'>Probar Formulario de Servicios</a>
+            <a href='contacto.php' class='btn'>Probar Formulario de Contacto</a>
+            <a href='planes.php' class='btn'>Probar Formulario de Planes</a>
+            <a href='entrenadores.php' class='btn'>Probar Formulario de Entrenadores</a>
+            <a href='servicios.php' class='btn'>Probar Formulario de Servicios</a>
         </div>
     </div>
 </body>
 </html>";
 ?>
+

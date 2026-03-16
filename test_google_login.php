@@ -132,3 +132,4 @@ echo "</ol>";
 echo "<hr>";
 echo "<p><a href='index.php'>← Volver al Login</a> | <a href='cliente.php'>Panel Cliente</a> | <a href='admin.php'>Panel Admin</a></p>";
 ?>
+

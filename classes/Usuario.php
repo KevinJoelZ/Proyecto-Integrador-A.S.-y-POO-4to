@@ -160,3 +160,4 @@ class Usuario {
     public function getFechaRegistro() { return $this->fecha_registro; }
 }
 ?>
+

@@ -599,7 +599,6 @@
     </style>
 </head>
 <body style="background: linear-gradient(180deg, #f7fbff 0%, #e3f0ff 100%);">
-    <!-- Header -->
     <?php include_once __DIR__ . '/template/headercliente.php'; ?>
 
     <!-- Sección de Rutinas -->
@@ -793,5 +792,7 @@
     <!-- Script principal de rutinas -->
     <script src="Scriptsindex/rutinas.js"></script>
 
+    <?php include_once __DIR__ . '/template/footercliente.php'; ?>
 </body>
 </html>
+

@@ -9,21 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body style="background: linear-gradient(180deg, #f7fbff 0%, #e3f0ff 100%);">
-    <header class="main-header">
-        <nav class="main-nav">
-            <div class="logo">
-                <i class="fas fa-dumbbell" style="font-size: 2.2rem; color: #ffb74d;"></i>
-                <span style="font-size: 1.5rem; color: #fff; font-weight: 700; letter-spacing: 1px;">DeporteFit</span>
-            </div>
-            <ul class="main-menu">
-                <li><a href="cliente.php">Inicio</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
-                <li><a href="entrenadores.html">Entrenadores</a></li>
-                <li><a href="planes.html">Planes y Precios</a></li>
-                <li><a href="contacto.html" class="activo">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include_once __DIR__ . '/template/headercliente.php'; ?>
     <main class="container">
     <div class="contacto-flex" style="display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; margin: 2.2rem auto 2.2rem auto;">
         <div class="servicio-card mejorado" style="max-width: 500px; width: 500px; margin: 0; background: linear-gradient(135deg, #f7fbff 0%, #e3f0ff 100%);">
@@ -259,47 +245,7 @@
     }
     </style>
 
-    <footer class="main-footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>DeporteFit</h3>
-            <p>La plataforma líder en entrenamiento deportivo personalizado con certificaciones profesionales.</p>
-            <div class="social-links">
-                                <a href="https://www.facebook.com/kevin.zapata.167561" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
-                                <a href="https://www.instagram.com/kevinzapata1999/?hl=es" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-                                <a href="https://x.com/KevinZapat42232" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.youtube.com/@kevinzapatamoreno608" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-        <div class="footer-section">
-            <h4>Servicios</h4>
-            <ul>
-                <li><a href="#">Entrenamiento Personal</a></li>
-                <li><a href="#">Cursos Certificados</a></li>
-                <li><a href="#">Planes de Nutrición</a></li>
-                <li><a href="#">Asesoría Deportiva</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Deportes</h4>
-            <ul>
-                <li><a href="#">Running</a></li>
-                <li><a href="#">Fitness</a></li>
-                <li><a href="#">Natación</a></li>
-                <li><a href="#">Ciclismo</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Contacto</h4>
-            <p><i class="fas fa-envelope"></i> info@deportefit.com</p>
-            <p><i class="fas fa-phone"></i> (593) 98 765 4321</p>
-            <p><i class="fas fa-map-marker-alt"></i> Calle Deportiva 123, Ciudad Quito</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        &copy; 2025 DeporteFit. Todos los derechos reservados.
-    </div>
-</footer>
+    <?php include_once __DIR__ . '/template/footercliente.php'; ?>
 <script>
     // Actualiza el año automáticamente en el footer
     document.addEventListener('DOMContentLoaded', function() {

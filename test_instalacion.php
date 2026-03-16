@@ -61,8 +61,8 @@ $archivos = [
     'classes/Progreso.php' => 'Clase Progreso',
     'admin_api/rutinas.php' => 'API Rutinas',
     'admin_api/progresos.php' => 'API Progresos',
-    'rutinas.html' => 'Página de Rutinas',
-    'progresos.html' => 'Página de Progresos',
+    'rutinas.php' => 'Página de Rutinas',
+    'progresos.php' => 'Página de Progresos',
     'Scriptsindex/rutinas.js' => 'Script Rutinas',
     'Scriptsindex/progresos.js' => 'Script Progresos',
 ];
@@ -232,3 +232,4 @@ echo "Sistema: DeporteFit POO Rutinas v1.0\n";
 echo "Fecha: " . date('Y-m-d H:i:s') . "\n";
 echo "═════════════════════════════════════════════════════════════════\n";
 ?>
+

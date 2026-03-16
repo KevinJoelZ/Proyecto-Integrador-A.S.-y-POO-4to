@@ -4,7 +4,7 @@ include '../conexión.php';
 
 // Verificar que la conexión esté activa
 if (!$conexion) {
-    header("Location: ../planes.html?error=1");
+    header("Location: ../planes.php?error=1");
     exit;
 }
 
@@ -19,12 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validaciones básicas
     if (empty($nombre) || empty($email) || empty($motivo) || empty($mensaje)) {
-        header("Location: ../planes.html?error=1");
+        header("Location: ../planes.php?error=1");
         exit;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../planes.html?error=1");
+        header("Location: ../planes.php?error=1");
         exit;
     }
 
@@ -43,28 +43,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (mysqli_stmt_affected_rows($stmt) > 0) {
                 mysqli_stmt_close($stmt);
                 mysqli_close($conexion);
-                header("Location: ../planes.html?success=1");
+                header("Location: ../planes.php?success=1");
                 exit;
             } else {
                 mysqli_stmt_close($stmt);
                 mysqli_close($conexion);
-                header("Location: ../planes.html?error=1");
+                header("Location: ../planes.php?error=1");
                 exit;
             }
         } else {
             mysqli_stmt_close($stmt);
             mysqli_close($conexion);
-            header("Location: ../planes.html?error=1");
+            header("Location: ../planes.php?error=1");
             exit;
         }
     } else {
         mysqli_close($conexion);
-        header("Location: ../planes.html?error=1");
+        header("Location: ../planes.php?error=1");
         exit;
     }
 } else {
     // Si no es POST, redirigir a la página principal
-    header("Location: ../index.html");
+    header("Location: ../index.php");
     exit;
 }
 ?>

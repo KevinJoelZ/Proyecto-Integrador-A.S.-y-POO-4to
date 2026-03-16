@@ -36,13 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
     
     // Determinar qué tipo de formulario es y procesarlo
-    if (strpos($referer, 'contacto.html') !== false) {
+    if (strpos($referer, 'contacto.php') !== false) {
         procesarFormularioContacto($conexion);
-    } elseif (strpos($referer, 'entrenadores.html') !== false) {
+    } elseif (strpos($referer, 'entrenadores.php') !== false) {
         procesarFormularioEntrenadores($conexion);
-    } elseif (strpos($referer, 'planes.html') !== false) {
+    } elseif (strpos($referer, 'planes.php') !== false) {
         procesarFormularioPlanes($conexion);
-    } elseif (strpos($referer, 'servicios.html') !== false) {
+    } elseif (strpos($referer, 'servicios.php') !== false) {
         procesarFormularioServicios($conexion);
     } else {
         // Si no se puede determinar, usar el formulario general
@@ -67,12 +67,12 @@ function procesarFormularioContacto($conexion) {
 
     // Validaciones básicas
     if (empty($nombre) || empty($email) || empty($motivo) || empty($mensaje) || !$privacidad) {
-        header("Location: ../contacto.html?error=1");
+        header("Location: ../contacto.php?error=1");
         exit;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../contacto.html?error=1");
+        header("Location: ../contacto.php?error=1");
         exit;
     }
 
@@ -89,20 +89,20 @@ function procesarFormularioContacto($conexion) {
         // Ejecutar la consulta
         if (mysqli_stmt_execute($stmt)) {
             if (mysqli_stmt_affected_rows($stmt) > 0) {
-                header("Location: ../contacto.html?success=1");
+                header("Location: ../contacto.php?success=1");
                 exit;
             } else {
-                header("Location: ../contacto.html?error=1");
+                header("Location: ../contacto.php?error=1");
                 exit;
             }
         } else {
-            header("Location: ../contacto.html?error=1");
+            header("Location: ../contacto.php?error=1");
             exit;
         }
         
         mysqli_stmt_close($stmt);
     } else {
-        header("Location: ../contacto.html?error=1");
+        header("Location: ../contacto.php?error=1");
         exit;
     }
 }
@@ -117,12 +117,12 @@ function procesarFormularioEntrenadores($conexion) {
 
     // Validaciones básicas
     if (empty($nombre) || empty($email) || empty($motivo) || empty($mensaje)) {
-        header("Location: ../entrenadores.html?error=1");
+        header("Location: ../entrenadores.php?error=1");
         exit;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../entrenadores.html?error=1");
+        header("Location: ../entrenadores.php?error=1");
         exit;
     }
 
@@ -139,20 +139,20 @@ function procesarFormularioEntrenadores($conexion) {
         // Ejecutar la consulta
         if (mysqli_stmt_execute($stmt)) {
             if (mysqli_stmt_affected_rows($stmt) > 0) {
-                header("Location: ../entrenadores.html?success=1");
+                header("Location: ../entrenadores.php?success=1");
                 exit;
             } else {
-                header("Location: ../entrenadores.html?error=1");
+                header("Location: ../entrenadores.php?error=1");
                 exit;
             }
         } else {
-            header("Location: ../entrenadores.html?error=1");
+            header("Location: ../entrenadores.php?error=1");
             exit;
         }
         
         mysqli_stmt_close($stmt);
     } else {
-        header("Location: ../entrenadores.html?error=1");
+        header("Location: ../entrenadores.php?error=1");
         exit;
     }
 }
@@ -167,12 +167,12 @@ function procesarFormularioPlanes($conexion) {
 
     // Validaciones básicas
     if (empty($nombre) || empty($email) || empty($motivo) || empty($mensaje)) {
-        header("Location: ../planes.html?error=1");
+        header("Location: ../planes.php?error=1");
         exit;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../planes.html?error=1");
+        header("Location: ../planes.php?error=1");
         exit;
     }
 
@@ -189,20 +189,20 @@ function procesarFormularioPlanes($conexion) {
         // Ejecutar la consulta
         if (mysqli_stmt_execute($stmt)) {
             if (mysqli_stmt_affected_rows($stmt) > 0) {
-                header("Location: ../planes.html?success=1");
+                header("Location: ../planes.php?success=1");
                 exit;
             } else {
-                header("Location: ../planes.html?error=1");
+                header("Location: ../planes.php?error=1");
                 exit;
             }
         } else {
-            header("Location: ../planes.html?error=1");
+            header("Location: ../planes.php?error=1");
             exit;
         }
         
         mysqli_stmt_close($stmt);
     } else {
-        header("Location: ../planes.html?error=1");
+        header("Location: ../planes.php?error=1");
         exit;
     }
 }
@@ -217,12 +217,12 @@ function procesarFormularioServicios($conexion) {
 
     // Validaciones básicas
     if (empty($nombre) || empty($email) || empty($motivo) || empty($mensaje)) {
-        header("Location: ../servicios.html?error=1");
+        header("Location: ../servicios.php?error=1");
         exit;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../servicios.html?error=1");
+        header("Location: ../servicios.php?error=1");
         exit;
     }
 
@@ -239,20 +239,20 @@ function procesarFormularioServicios($conexion) {
         // Ejecutar la consulta
         if (mysqli_stmt_execute($stmt)) {
             if (mysqli_stmt_affected_rows($stmt) > 0) {
-                header("Location: ../servicios.html?success=1");
+                header("Location: ../servicios.php?success=1");
                 exit;
             } else {
-                header("Location: ../servicios.html?error=1");
+                header("Location: ../servicios.php?error=1");
                 exit;
             }
         } else {
-            header("Location: ../servicios.html?error=1");
+            header("Location: ../servicios.php?error=1");
             exit;
         }
         
         mysqli_stmt_close($stmt);
     } else {
-        header("Location: ../servicios.html?error=1");
+        header("Location: ../servicios.php?error=1");
         exit;
     }
 }
@@ -302,8 +302,9 @@ function procesarFormularioGeneral($conexion) {
         
         mysqli_stmt_close($stmt);
     } else {
-        header("Location: ../index.html?error=1");
+        header("Location: ../index.php?error=1");
         exit;
     }
 }
 ?>
+

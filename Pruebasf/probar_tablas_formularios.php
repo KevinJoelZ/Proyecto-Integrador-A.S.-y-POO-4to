@@ -218,9 +218,9 @@ echo "<hr>
             <div class='card'>
                 <h4>✅ Tablas de Formularios Específicos:</h4>
                 <ul>
-                    <li><strong>solicitudes_entrenadores</strong> - Formulario de entrenadores.html</li>
-                    <li><strong>solicitudes_planes</strong> - Formulario de planes.html</li>
-                    <li><strong>solicitudes_servicios</strong> - Formulario de servicios.html</li>
+                    <li><strong>solicitudes_entrenadores</strong> - Formulario de entrenadores.php</li>
+                    <li><strong>solicitudes_planes</strong> - Formulario de planes.php</li>
+                    <li><strong>solicitudes_servicios</strong> - Formulario de servicios.php</li>
                 </ul>
             </div>
         </div>
@@ -228,10 +228,10 @@ echo "<hr>
         <div class='section'>
             <h4>🔧 Campos de Cada Formulario:</h4>
             <div class='form-info'>
-                <strong>contacto.html:</strong> nombre, email, telefono, motivo, mensaje, privacidad ✅<br>
-                <strong>entrenadores.html:</strong> nombre, email, telefono, motivo, mensaje ✅<br>
-                <strong>planes.html:</strong> nombre, email, telefono, motivo, mensaje ✅<br>
-                <strong>servicios.html:</strong> nombre, email, telefono, motivo, mensaje ✅
+                <strong>contacto.php:</strong> nombre, email, telefono, motivo, mensaje, privacidad ✅<br>
+                <strong>entrenadores.php:</strong> nombre, email, telefono, motivo, mensaje ✅<br>
+                <strong>planes.php:</strong> nombre, email, telefono, motivo, mensaje ✅<br>
+                <strong>servicios.php:</strong> nombre, email, telefono, motivo, mensaje ✅
             </div>
         </div>
         
@@ -248,12 +248,13 @@ echo "<hr>
         <div class='section'>
             <h4>🧪 Enlaces de Prueba:</h4>
             <a href='probar_formularios.php' class='btn'>Probar Formularios Básicos</a>
-            <a href='contacto.html' class='btn'>Formulario de Contacto</a>
-            <a href='entrenadores.html' class='btn'>Formulario de Entrenadores</a>
-            <a href='planes.html' class='btn'>Formulario de Planes</a>
-            <a href='servicios.html' class='btn'>Formulario de Servicios</a>
+            <a href='contacto.php' class='btn'>Formulario de Contacto</a>
+            <a href='entrenadores.php' class='btn'>Formulario de Entrenadores</a>
+            <a href='planes.php' class='btn'>Formulario de Planes</a>
+            <a href='servicios.php' class='btn'>Formulario de Servicios</a>
         </div>
     </div>
 </body>
 </html>";
 ?>
+

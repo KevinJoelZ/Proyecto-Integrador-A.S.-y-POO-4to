@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_close($conexion);
 } else {
     // Si no es POST, redirigir a la página principal
-    header("Location: index.html");
+    header("Location: index.php");
     exit;
 }
 
@@ -49,10 +49,10 @@ function procesarSolicitudEntrenador($conexion) {
 
     // Determinar la página de origen para redirigir correctamente
     $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-    $redirect_page = 'entrenadores.html';
+    $redirect_page = 'entrenadores.php';
     
-    if (strpos($referer, 'contacto.html') !== false) {
-        $redirect_page = 'contacto.html';
+    if (strpos($referer, 'contacto.php') !== false) {
+        $redirect_page = 'contacto.php';
     }
 
     // Consulta SQL para insertar solicitud de entrenador
@@ -107,10 +107,10 @@ function procesarSolicitudPlan($conexion) {
 
     // Determinar la página de origen para redirigir correctamente
     $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-    $redirect_page = 'planes.html';
+    $redirect_page = 'planes.php';
     
-    if (strpos($referer, 'contacto.html') !== false) {
-        $redirect_page = 'contacto.html';
+    if (strpos($referer, 'contacto.php') !== false) {
+        $redirect_page = 'contacto.php';
     }
 
     // Consulta SQL para insertar solicitud de plan
@@ -143,3 +143,4 @@ function procesarSolicitudPlan($conexion) {
     }
 }
 ?>
+

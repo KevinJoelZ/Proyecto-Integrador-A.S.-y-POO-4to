@@ -85,3 +85,4 @@ echo "<li>Si ves errores de conexión, verifica los datos en 'conexión.php'</li
 echo "<li>Si todo funciona, puedes eliminar este archivo de prueba</li>";
 echo "</ul>";
 ?>
+

@@ -241,11 +241,12 @@ echo "<hr>
         <div class='section'>
             <h4>🧪 Enlaces de Prueba:</h4>
             <a href='probar_formularios.php' class='btn'>Probar Formularios Básicos</a>
-            <a href='contacto.html' class='btn'>Formulario de Contacto</a>
-            <a href='entrenadores.html' class='btn'>Formulario de Entrenadores</a>
-            <a href='planes.html' class='btn'>Formulario de Planes</a>
+            <a href='contacto.php' class='btn'>Formulario de Contacto</a>
+            <a href='entrenadores.php' class='btn'>Formulario de Entrenadores</a>
+            <a href='planes.php' class='btn'>Formulario de Planes</a>
         </div>
     </div>
 </body>
 </html>";
 ?>
+

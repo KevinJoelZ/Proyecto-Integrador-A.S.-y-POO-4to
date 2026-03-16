@@ -172,3 +172,4 @@ class Entrenador {
     public function getFechaRegistro() { return $this->fecha_registro; }
 }
 ?>
+

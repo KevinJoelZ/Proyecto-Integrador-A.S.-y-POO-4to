@@ -3,7 +3,7 @@
 $host = 'localhost';
 $usuario = 'root';
 $contraseña = '';
-$base_datos = 'pagina_deportiva'; // Cambia este nombre si tu base de datos local tiene otro nombre
+$base_datos = 'pagina_deportiva2'; // Cambia este nombre si tu base de datos local tiene otro nombre
 
 $conexion = new mysqli($host, $usuario, $contraseña, $base_datos);
 

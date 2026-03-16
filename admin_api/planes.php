@@ -86,3 +86,4 @@ if ($action === 'save_choice') {
 
 // Acción no válida
 echo json_encode(['success' => false, 'message' => 'Acción no válida']);
+

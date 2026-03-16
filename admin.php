@@ -59,10 +59,10 @@ $user_email = $_SESSION['user_email'] ?? '';
           <label style="margin-top:8px; display:block">Página destino</label>
           <select class="input" id="faq-page">
             <option value="cliente">Cliente (cliente.php)</option>
-            <option value="servicios">Servicios (servicios.html)</option>
-            <option value="entrenadores">Entrenadores (entrenadores.html)</option>
-            <option value="planes">Planes (planes.html)</option>
-            <option value="contacto">Contacto (contacto.html)</option>
+            <option value="servicios">Servicios (servicios.php)</option>
+            <option value="entrenadores">Entrenadores (entrenadores.php)</option>
+            <option value="planes">Planes (planes.php)</option>
+            <option value="contacto">Contacto (contacto.php)</option>
           </select>
           <div style="margin-top:10px; display:flex; gap:.6rem;">
             <button class="btn primary" id="faq-guardar"><i class="fas fa-save"></i> Guardar</button>

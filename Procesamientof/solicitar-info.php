@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 echo "<script>
                     alert('¡Éxito! Tu solicitud de información ha sido registrada correctamente. ID de solicitud: " . $id_solicitud . ". Te contactaremos pronto.');
-                    window.location.href = 'servicios.html';
+                    window.location.href = 'servicios.php';
                 </script>";
             } else {
                 echo "<script>alert('Error: No se pudo registrar la solicitud en la base de datos.'); window.history.back();</script>";
@@ -71,7 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
 } else {
     // Si no es POST, redirigir a la página de servicios
-    header("Location: servicios.html");
+    header("Location: servicios.php");
     exit;
 }
 ?>
+

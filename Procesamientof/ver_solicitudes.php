@@ -78,7 +78,7 @@ $resultado = mysqli_query($conexion, $sql);
         <?php endif; ?>
         
         <hr>
-        <a href="index.html" style="color: #007bff; text-decoration: none;">← Volver al sitio principal</a>
+        <a href="index.php" style="color: #007bff; text-decoration: none;">← Volver al sitio principal</a>
         <p><em>Accede a esta página en: http://localhost/Página_deportiva/Procesamientof/ver_solicitudes.php</em></p>
     </div>
 </body>

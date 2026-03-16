@@ -35,16 +35,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Determinar la página de origen para redirigir correctamente
     $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-    $redirect_page = 'index.html'; // Página por defecto
+    $redirect_page = 'index.php'; // Página por defecto
     
-    if (strpos($referer, 'contacto.html') !== false) {
-        $redirect_page = 'contacto.html';
-    } elseif (strpos($referer, 'planes.html') !== false) {
-        $redirect_page = 'planes.html';
-    } elseif (strpos($referer, 'entrenadores.html') !== false) {
-        $redirect_page = 'entrenadores.html';
-    } elseif (strpos($referer, 'servicios.html') !== false) {
-        $redirect_page = 'servicios.html';
+    if (strpos($referer, 'contacto.php') !== false) {
+        $redirect_page = 'contacto.php';
+    } elseif (strpos($referer, 'planes.php') !== false) {
+        $redirect_page = 'planes.php';
+    } elseif (strpos($referer, 'entrenadores.php') !== false) {
+        $redirect_page = 'entrenadores.php';
+    } elseif (strpos($referer, 'servicios.php') !== false) {
+        $redirect_page = 'servicios.php';
     }
 
     // Consulta SQL para insertar en la tabla contactos
@@ -83,7 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
 } else {
     // Si no es POST, redirigir a la página principal
-    header("Location: index.html");
+    header("Location: index.php");
     exit;
 }
 ?>
+

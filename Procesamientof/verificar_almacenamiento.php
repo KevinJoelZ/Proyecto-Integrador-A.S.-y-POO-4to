@@ -173,7 +173,7 @@ echo "<h2>🔧 Acciones Disponibles</h2>";
 echo "<a href='test_conexion.php' class='btn'>🧪 Probar Conexión</a>";
 echo "<a href='probar_formularios.php' class='btn'>📝 Probar Formularios</a>";
 echo "<a href='probar_tablas_formularios.php' class='btn'>📊 Probar Tablas</a>";
-echo "<a href='index.html' class='btn'>🏠 Ir a Página Principal</a>";
+echo "<a href='index.php' class='btn'>🏠 Ir a Página Principal</a>";
 
 echo "<h2>📝 Instrucciones para Verificar</h2>";
 echo "<div class='info'>";
@@ -200,3 +200,4 @@ mysqli_close($conexion);
 
 echo "</div></body></html>";
 ?>
+

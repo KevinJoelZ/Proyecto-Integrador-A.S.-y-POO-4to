@@ -683,6 +683,8 @@
     </script>
 
     <script src="Scriptsindex/progresos.js"></script>
+    <?php include_once __DIR__ . '/template/footercliente.php'; ?>
 
 </body>
 </html>
+

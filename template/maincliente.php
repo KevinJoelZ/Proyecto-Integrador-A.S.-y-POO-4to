@@ -5,10 +5,10 @@
             <h1>Transforma tu vida con entrenamiento deportivo profesional</h1>
             <p class="hero-subtitle">La plataforma web en entrenamiento personalizado para múltiples deportes. Accede a cursos certificados, entrenadores expertos y programas diseñados para alcanzar tus objetivos deportivos desde cualquier lugar del mundo.</p>
             <div class="hero-buttons">
-                <a href="planes.html" class="btn btn-primary">Comenzar Ahora</a>
-                <a href="servicios.html" class="btn btn-secondary">Ver Deportes</a>
-                <a href="rutinas.html" class="btn btn-primary" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">Mis Rutinas</a>
-                <a href="progresos.html" class="btn btn-secondary" style="background: #f97316; color: white;">Mi Progreso</a>
+                <a href="planes.php" class="btn btn-primary">Comenzar Ahora</a>
+                <a href="servicios.php" class="btn btn-secondary">Ver Deportes</a>
+                <a href="rutinas.php" class="btn btn-primary" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">Mis Rutinas</a>
+                <a href="progresos.php" class="btn btn-secondary" style="background: #f97316; color: white;">Mi Progreso</a>
             </div>
             <div class="hero-stats">
                 <div class="stat">
@@ -95,7 +95,7 @@
                         <i class="fas fa-user-check"></i>
                         <h3>Entrenamiento Personalizado</h3>
                         <p>Programas adaptados a tus objetivos, nivel y disciplina, con seguimiento individual de tu progreso.</p>
-                        <a href="servicios.html#entrenamiento-personal" class="btn btn-secondary">Ver más</a>
+                        <a href="servicios.php#entrenamiento-personal" class="btn btn-secondary">Ver más</a>
                     </div>
                 </div>
                 <div class="servicio-card">
@@ -104,7 +104,7 @@
                         <i class="fas fa-certificate"></i>
                         <h3>Cursos Certificados</h3>
                         <p>Capacítate con cursos avalados por federaciones y obtén certificaciones reconocidas internacionalmente.</p>
-                        <a href="servicios.html#cursos-certificados" class="btn btn-secondary">Ver más</a>
+                        <a href="servicios.php#cursos-certificados" class="btn btn-secondary">Ver más</a>
                     </div>
                 </div>
                 <div class="servicio-card">
@@ -113,7 +113,7 @@
                         <i class="fas fa-apple-alt"></i>
                         <h3>Planes de Nutrición</h3>
                         <p>Asesoría nutricional profesional para complementar tu entrenamiento y mejorar tu rendimiento.</p>
-                        <a href="servicios.html#nutricion" class="btn btn-secondary">Ver más</a>
+                        <a href="servicios.php#nutricion" class="btn btn-secondary">Ver más</a>
                     </div>
                 </div>
                 <div class="servicio-card">
@@ -122,7 +122,7 @@
                         <i class="fas fa-chalkboard-teacher"></i>
                         <h3>Asesoría Deportiva</h3>
                         <p>Consultoría especializada para deportistas, clubes y empresas que buscan optimizar resultados.</p>
-                        <a href="servicios.html#asesoria" class="btn btn-secondary">Ver más</a>
+                        <a href="servicios.php#asesoria" class="btn btn-secondary">Ver más</a>
                     </div>
                 </div>
                 <div class="servicio-card">
@@ -131,7 +131,7 @@
                         <i class="fas fa-laptop-medical"></i>
                         <h3>Seguimiento Online</h3>
                         <p>Monitoreo remoto de tu entrenamiento y salud, con reportes y ajustes en tiempo real.</p>
-                        <a href="servicios.html#seguimiento" class="btn btn-secondary">Ver más</a>
+                        <a href="servicios.php#seguimiento" class="btn btn-secondary">Ver más</a>
                     </div>
                 </div>
                 <div class="servicio-card">
@@ -140,7 +140,7 @@
                         <i class="fas fa-heartbeat"></i>
                         <h3>Evaluación Física</h3>
                         <p>Diagnóstico completo de tu condición física para diseñar el mejor plan de acción.</p>
-                        <a href="servicios.html#evaluacion" class="btn btn-secondary">Ver más</a>
+                        <a href="servicios.php#evaluacion" class="btn btn-secondary">Ver más</a>
                     </div>
                 </div>
             </div>
@@ -319,8 +319,8 @@
             <h2>¿Listo para Transformar tu Vida Deportiva?</h2>
             <p style="text-align: center;">Únete a miles de deportistas que ya han alcanzado sus objetivos con nuestras certificaciones profesionales</p>
             <div class="cta-buttons" style="justify-content: center; display: flex; gap: 1.5rem; margin-top: 1.5rem;">
-                <a href="planes.html" class="btn btn-primary">Ver Planes</a>
-                <a href="contacto.html" class="btn btn-secondary" style="background: linear-gradient(90deg, #ff9800 0%, #ffb74d 100%); color: #fff; border: none;">Contactar</a>
+                <a href="planes.php" class="btn btn-primary">Ver Planes</a>
+                <a href="contacto.php" class="btn btn-secondary" style="background: linear-gradient(90deg, #ff9800 0%, #ffb74d 100%); color: #fff; border: none;">Contactar</a>
             </div>
         </div>
     </section>

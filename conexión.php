@@ -4,7 +4,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "pagina_deportiva"; // Cambia este nombre si tu base de datos local tiene otro nombre
+$database = "pagina_deportiva2"; // Cambia este nombre si tu base de datos local tiene otro nombre
 
 // Crear conexión
 $conexion = new mysqli($host, $user, $password, $database);

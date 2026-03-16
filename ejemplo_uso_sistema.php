@@ -193,3 +193,4 @@ echo "✓ Interfaz web responsiva" . PHP_EOL;
 echo PHP_EOL;
 
 ?>
+

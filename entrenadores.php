@@ -62,21 +62,7 @@
     }
 }
 </style>
-    <header class="main-header">
-        <nav class="main-nav">
-            <div class="logo">
-                <i class="fas fa-dumbbell" style="font-size: 2.2rem; color: #ffb74d;"></i>
-                <span style="font-size: 1.5rem; color: #fff; font-weight: 700; letter-spacing: 1px;">DeporteFit</span>
-            </div>
-            <ul class="main-menu">
-                <li><a href="cliente.php">Inicio</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
-                <li><a href="entrenadores.html" class="activo">Entrenadores</a></li>
-                <li><a href="planes.html">Planes y Precios</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include_once __DIR__ . '/template/headercliente.php'; ?>
                 <div class="servicios-grid mejorado" style="display: flex; flex-direction: column; gap: 2rem; justify-content: center; align-items: center; max-width: 1000px; margin: 0 auto calc(2rem - 2cm) auto; padding: 1.5rem 1rem;">
                     <!-- Primera fila -->
                     <div style="display: flex; gap: 2.5rem; justify-content: center; flex-wrap: nowrap; width: 100%;">
@@ -90,7 +76,7 @@
                                 <p class="certificacion"><i class="fas fa-certificate"></i> Certificación ACE, FIVB</p>
                                 <blockquote class="frase-entrenador" style="text-align: justify;">"El éxito es la suma de pequeños esfuerzos repetidos cada día."</blockquote>
                                     <!-- Redes sociales eliminadas -->
-                                <a href="contacto.html" class="btn btn-secondary">Contactar</a>
+                                <a href="contacto.php" class="btn btn-secondary">Contactar</a>
                             </div>
                         </div>
                         <div class="servicio-card mejorado" style="width: 370px; min-height: 410px; background: #fff; border-radius: 1.1rem; box-shadow: 0 8px 24px rgba(25,118,210,0.12); border: 1px solid #e6eefc; display: flex; flex-direction: column; align-items: center;">
@@ -103,7 +89,7 @@
                                 <p class="certificacion"><i class="fas fa-certificate"></i> Certificación NSCA, ISSA</p>
                                 <blockquote class="frase-entrenador" style="text-align: justify;">"La constancia vence al talento cuando el talento no se esfuerza."</blockquote>
                                     <!-- Redes sociales eliminadas -->
-                                <a href="contacto.html" class="btn btn-secondary">Contactar</a>
+                                <a href="contacto.php" class="btn btn-secondary">Contactar</a>
                             </div>
                         </div>
                         <div class="servicio-card mejorado" style="width: 370px; min-height: 410px; background: #fff; border-radius: 1.1rem; box-shadow: 0 8px 24px rgba(25,118,210,0.12); border: 1px solid #e6eefc; display: flex; flex-direction: column; align-items: center;">
@@ -116,7 +102,7 @@
                                 <p class="certificacion"><i class="fas fa-certificate"></i> Certificación FINA</p>
                                 <blockquote class="frase-entrenador" style="text-align: justify;">"La disciplina y la constancia te llevan lejos, dentro y fuera del agua."</blockquote>
                                     <!-- Redes sociales eliminadas -->
-                                <a href="contacto.html" class="btn btn-secondary">Contactar</a>
+                                <a href="contacto.php" class="btn btn-secondary">Contactar</a>
                             </div>
                         </div>
                     </div>
@@ -132,7 +118,7 @@
                                 <p class="certificacion"><i class="fas fa-certificate"></i> Lic. Psicología, Cert. Coaching Deportivo</p>
                                 <blockquote class="frase-entrenador" style="text-align: justify;">"La mente es el músculo más importante para un atleta."</blockquote>
                                     <!-- Redes sociales eliminadas -->
-                                <a href="contacto.html" class="btn btn-secondary">Contactar</a>
+                                <a href="contacto.php" class="btn btn-secondary">Contactar</a>
                             </div>
                         </div>
                         <div class="servicio-card mejorado" style="width: 370px; min-height: 410px; background: #fff; border-radius: 1.1rem; box-shadow: 0 8px 24px rgba(25,118,210,0.12); border: 1px solid #e6eefc; display: flex; flex-direction: column; align-items: center;">
@@ -145,7 +131,7 @@
                                 <p class="certificacion"><i class="fas fa-certificate"></i> Certificación UCI</p>
                                 <blockquote class="frase-entrenador" style="text-align: justify;">"El ciclismo es pasión, esfuerzo y libertad sobre dos ruedas."</blockquote>
                                     <!-- Redes sociales eliminadas -->
-                                <a href="contacto.html" class="btn btn-secondary">Contactar</a>
+                                <a href="contacto.php" class="btn btn-secondary">Contactar</a>
                             </div>
                         </div>
                         <div class="servicio-card mejorado" style="width: 370px; min-height: 410px; background: #fff; border-radius: 1.1rem; box-shadow: 0 2px 12px rgba(25,118,210,0.07); display: flex; flex-direction: column; align-items: center;">
@@ -164,7 +150,7 @@
                                 <p class="certificacion"><i class="fas fa-certificate"></i> Árbitro Nacional, FIVB</p>
                                 <blockquote class="frase-entrenador" style="text-align: justify;">"El respeto y la disciplina son la base del deporte."</blockquote>
                                     <!-- Redes sociales eliminadas -->
-                                <a href="contacto.html" class="btn btn-secondary">Contactar</a>
+                                <a href="contacto.php" class="btn btn-secondary">Contactar</a>
                             </div>
                         </div>
                     </div>
@@ -267,47 +253,7 @@
             </div>
         </section>
     </main>
-    <footer class="main-footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>DeporteFit</h3>
-            <p>La plataforma líder en entrenamiento deportivo personalizado con certificaciones profesionales.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-        <div class="footer-section">
-            <h4>Servicios</h4>
-            <ul>
-                <li><a href="#">Entrenamiento Personal</a></li>
-                <li><a href="#">Cursos Certificados</a></li>
-                <li><a href="#">Planes de Nutrición</a></li>
-                <li><a href="#">Asesoría Deportiva</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Deportes</h4>
-            <ul>
-                <li><a href="#">Running</a></li>
-                <li><a href="#">Fitness</a></li>
-                <li><a href="#">Natación</a></li>
-                <li><a href="#">Ciclismo</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Contacto</h4>
-            <p><i class="fas fa-envelope"></i> info@deportefit.com</p>
-            <p><i class="fas fa-phone"></i> (593) 98 765 4321</p>
-            <p><i class="fas fa-map-marker-alt"></i> Calle Deportiva 123, Ciudad Quito</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        &copy; 2025 DeporteFit. Todos los derechos reservados.
-    </div>
-</footer>
+    <?php include_once __DIR__ . '/template/footercliente.php'; ?>
 <script>
     // Actualiza el año automáticamente en el footer
     document.addEventListener('DOMContentLoaded', function() {
