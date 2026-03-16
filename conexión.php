@@ -1,9 +1,10 @@
 <?php
 // Configuración para XAMPP local
+
 $host = "localhost";
-$user = "root";          // Usuario por defecto de XAMPP
-$password = "";          // Contraseña por defecto (vacía en XAMPP)
-$database = "guardarbd"; // Nombre de la base de datos local en XAMPP
+$user = "root";
+$password = "";
+$database = "pagina_deportiva"; // Cambia este nombre si tu base de datos local tiene otro nombre
 
 // Crear conexión
 $conexion = new mysqli($host, $user, $password, $database);

@@ -8,7 +8,7 @@ echo "<h2>Test de Funcionalidad - Login con Google</h2>";
 // Verificar conexión a la base de datos
 echo "<h3>1. Conexión a Base de Datos:</h3>";
 if ($conexion) {
-    echo "✅ Conexión exitosa a la base de datos 'guardarbd'<br>";
+    echo "✅ Conexión exitosa a la base de datos 'pagina_deportiva'<br>";
     
     // Verificar si existe la tabla usuarios
     $result = $conexion->query("SHOW TABLES LIKE 'usuarios'");
@@ -123,7 +123,7 @@ if (isset($_SESSION['user_id'])) {
 echo "<h3>5. Instrucciones:</h3>";
 echo "<ol>";
 echo "<li>Asegúrate de que XAMPP esté ejecutándose (Apache y MySQL)</li>";
-echo "<li>Verifica que la base de datos 'guardarbd' exista</li>";
+echo "<li>Verifica que la base de datos 'pagina_deportiva' exista</li>";
 echo "<li>Si la tabla 'usuarios' no existe, créala usando el SQL mostrado arriba</li>";
 echo "<li>Ve a <a href='index.php'>index.php</a> para probar el login con Google</li>";
 echo "<li>Después del login exitoso, deberías ser redirigido a <a href='cliente.php'>cliente.php</a></li>";

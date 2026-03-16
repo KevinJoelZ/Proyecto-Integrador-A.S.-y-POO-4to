@@ -465,16 +465,21 @@ class GestorRutinas {
      * Obtener ID de usuario
      */
     async obtenerUsuarioId() {
-        // Este método depende de Firebase
-        // Retorna el UID del usuario actual
-        return new Promise((resolve) => {
-            const user = window.usuarioActual?.();
-            if (user) {
-                resolve(user.uid);
-            } else {
-                resolve(null);
+        // Obtener UID de Firebase
+        const user = window.usuarioActual?.();
+        if (!user || !user.uid) return null;
+
+        // Consultar al backend el ID entero
+        try {
+            const response = await fetch(`./admin_api/users.php?action=obtener_por_uid&uid=${user.uid}`);
+            const result = await response.json();
+            if (result.success && result.data && result.data.id) {
+                return result.data.id; // Este es el ID entero de la tabla usuarios
             }
-        });
+        } catch (error) {
+            console.error('Error obteniendo ID de usuario:', error);
+        }
+        return null;
     }
 
     /**

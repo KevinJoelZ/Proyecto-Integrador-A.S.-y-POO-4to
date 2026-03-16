@@ -2,8 +2,8 @@
 -- Ejecutar este script en phpMyAdmin o MySQL Workbench
 
 -- Crear la base de datos si no existe
-CREATE DATABASE IF NOT EXISTS guardarbd;
-USE guardarbd;
+CREATE DATABASE IF NOT EXISTS pagina_deportiva;
+USE pagina_deportiva;
 
 -- Crear la tabla usuarios
 CREATE TABLE IF NOT EXISTS usuarios (

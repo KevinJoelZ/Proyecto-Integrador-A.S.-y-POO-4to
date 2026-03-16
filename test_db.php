@@ -24,16 +24,16 @@ while ($row = $result->fetch_array(MYSQLI_NUM)) {
 }
 echo "</ul>";
 
-// Verificar si 'guardarbd' existe
+// Verificar si 'pagina_deportiva' existe
 if (in_array("guardar_base_datos", $databases)) {
-    echo "<p style='color: green;'>✅ Base de datos 'guardarbd' existe</p>";
+    echo "<p style='color: green;'>✅ Base de datos 'pagina_deportiva' existe</p>";
     
-    // Conectar a 'guardarbd'
+    // Conectar a 'pagina_deportiva'
     $conexion = new mysqli($host, $user, $password, $database);
     if ($conexion->connect_error) {
-        echo "<p style='color: red;'>❌ Error conectando a 'guardarbd': " . $conexion->connect_error . "</p>";
+        echo "<p style='color: red;'>❌ Error conectando a 'pagina_deportiva': " . $conexion->connect_error . "</p>";
     } else {
-        echo "<p style='color: green;'>✅ Conexión a 'guardarbd' exitosa</p>";
+        echo "<p style='color: green;'>✅ Conexión a 'pagina_deportiva' exitosa</p>";
         
         // Listar todas las tablas en la BD
         $tables_result = $conexion->query("SHOW TABLES");

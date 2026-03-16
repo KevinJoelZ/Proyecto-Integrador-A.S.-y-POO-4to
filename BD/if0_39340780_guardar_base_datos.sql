@@ -2,7 +2,7 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: sql107.infinityfree.com
+-- Servidor: localhost
 -- Tiempo de generación: 29-08-2025 a las 19:31:35
 -- Versión del servidor: 11.4.7-MariaDB
 -- Versión de PHP: 7.2.22

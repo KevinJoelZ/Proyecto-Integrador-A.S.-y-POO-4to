@@ -1,8 +1,9 @@
 <?php
-$host = 'sql107.infinityfree.com';
-$usuario = 'if0_39340780';
-$contraseña = 'Vd30M31z3a';
-$base_datos = 'if0_39340780_guardar_base_datos';
+
+$host = 'localhost';
+$usuario = 'root';
+$contraseña = '';
+$base_datos = 'pagina_deportiva'; // Cambia este nombre si tu base de datos local tiene otro nombre
 
 $conexion = new mysqli($host, $usuario, $contraseña, $base_datos);
 

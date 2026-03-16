@@ -31,16 +31,27 @@ class Rutina {
         $sql = "INSERT INTO rutinas (usuario_id, entrenador_id, nombre, deporte, descripcion, objetivo, nivel, 
                 duracion_semanas, frecuencia_semanal, fecha_inicio, fecha_fin, estado, fecha_creacion) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
-        
+
         $stmt = $this->conexion->prepare($sql);
         if (!$stmt) {
             return ['success' => false, 'message' => 'Error de preparación: ' . $this->conexion->error];
         }
 
-        $stmt->bind_param("iisssssss", $this->usuario_id, $this->entrenador_id, $this->nombre, 
-                         $this->deporte, $this->descripcion, $this->objetivo, $this->nivel,
-                         $this->duracion_semanas, $this->frecuencia_semanal, 
-                         $this->fecha_inicio, $this->fecha_fin, $this->estado);
+        $stmt->bind_param(
+            "iisssssssssss",
+            $this->usuario_id,
+            $this->entrenador_id,
+            $this->nombre,
+            $this->deporte,
+            $this->descripcion,
+            $this->objetivo,
+            $this->nivel,
+            $this->duracion_semanas,
+            $this->frecuencia_semanal,
+            $this->fecha_inicio,
+            $this->fecha_fin,
+            $this->estado
+        );
 
         if ($stmt->execute()) {
             $this->id = $this->conexion->insert_id;

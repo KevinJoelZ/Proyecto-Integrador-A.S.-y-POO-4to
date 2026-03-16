@@ -19,21 +19,24 @@ if (file_exists(__DIR__ . '/../conexión.php')) {
 // Descartar cualquier salida accidental del archivo de conexión
 ob_end_clean();
 
-try {
-    // Asegurar tabla usuarios
-    $conexion->query("CREATE TABLE IF NOT EXISTS usuarios (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        uid VARCHAR(255) UNIQUE,
-        nombre VARCHAR(255) NOT NULL,
-        email VARCHAR(255) UNIQUE NOT NULL,
-        foto_perfil TEXT,
-        email_verificado TINYINT(1) DEFAULT 0,
-        fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        ultima_conexion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        estado ENUM('activo','inactivo') DEFAULT 'activo',
-        rol ENUM('admin','cliente') DEFAULT 'cliente'
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
+require_once __DIR__ . '/../classes/Usuario.php';
+$action = $_GET['action'] ?? 'list';
+
+try {
+    // Endpoint para obtener usuario por UID
+    if ($action === 'obtener_por_uid' && isset($_GET['uid'])) {
+        $usuario = new Usuario($conexion);
+        $data = $usuario->obtenerPorUid($_GET['uid']);
+        if ($data) {
+            echo json_encode(['success' => true, 'data' => $data]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Usuario no encontrado']);
+        }
+        exit;
+    }
+
+    // Listar usuarios (por defecto)
     $q = "SELECT id, uid, nombre, email, rol, ultima_conexion FROM usuarios ORDER BY ultima_conexion DESC, id DESC LIMIT 200";
     $res = $conexion->query($q);
     if ($res === false) {

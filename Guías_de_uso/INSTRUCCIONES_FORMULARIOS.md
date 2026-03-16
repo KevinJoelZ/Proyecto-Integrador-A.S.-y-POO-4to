@@ -4,7 +4,7 @@
 
 ### 1. **Base de Datos InfinityFree**
 - Los datos de conexión ya están configurados en `conexión.php`
-- Host: `sql107.infinityfree.com`
+- Host: `localhost`
 - Base de datos: `if0_39340780_guardar_base_datos`
 
 ### 2. **Crear Tablas en la Base de Datos**

@@ -1,7 +1,7 @@
 -- Script para crear la tabla de usuarios para autenticación con Google
--- Ejecutar en XAMPP/MySQL: mysql -u root -p"" guardarbd < BD/users_table.sql
+-- Ejecutar en XAMPP/MySQL: mysql -u root -p"" pagina_deportiva < BD/users_table.sql
 
-USE guardarbd;
+USE pagina_deportiva;
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,

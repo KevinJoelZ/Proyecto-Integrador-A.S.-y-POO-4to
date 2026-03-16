@@ -41,7 +41,7 @@ Editar archivo `conexion.php` con tus credenciales:
 $host = 'localhost';      // Tu servidor MySQL
 $usuario = 'root';        // Tu usuario MySQL
 $contraseña = '';         // Tu contraseña
-$base_datos = 'guardarbd'; // Tu base de datos
+$base_datos = 'pagina_deportiva'; // Tu base de datos
 
 // El resto no necesita cambios
 ?>
@@ -304,10 +304,10 @@ El sistema está optimizado para:
 
 ```bash
 # Exportar base de datos
-mysqldump -u usuario -p guardarbd > backup_rutinas.sql
+mysqldump -u usuario -p pagina_deportiva > backup_rutinas.sql
 
 # Restaurar base de datos
-mysql -u usuario -p guardarbd < backup_rutinas.sql
+mysql -u usuario -p pagina_deportiva < backup_rutinas.sql
 ```
 
 ---
