@@ -674,8 +674,9 @@
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 usuarioActual = user;
-                cargarProgresos();
             }
+            // Siempre cargar progresos (modo demo sin Firebase)
+            cargarProgresos();
         });
 
         window.usuarioActual = () => usuarioActual;

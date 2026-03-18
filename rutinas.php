@@ -780,8 +780,9 @@
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 usuarioActual = user;
-                cargarRutinas();
             }
+            // Siempre cargar rutinas (modo demo sin Firebase)
+            cargarRutinas();
         });
 
         // Hacer disponible globalmente

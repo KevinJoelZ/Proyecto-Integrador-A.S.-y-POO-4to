@@ -98,7 +98,7 @@ class GestorProgresos {
         };
 
         try {
-            const response = await fetch('./admin_api/progresos.php?action=registrar', {
+            const response = await fetch('./debug_progreso.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(progreso)
@@ -127,7 +127,7 @@ class GestorProgresos {
         if (!usuarioId) return;
 
         try {
-            const response = await fetch(`./admin_api/progresos.php?action=obtener&usuario_id=${usuarioId}&limite=100`);
+            const response = await fetch(`./obtener_progresos.php?usuario_id=${usuarioId}`);
             const result = await response.json();
 
             if (result.success) {
@@ -425,14 +425,9 @@ class GestorProgresos {
      * Obtener ID de usuario
      */
     async obtenerUsuarioId() {
-        return new Promise((resolve) => {
-            const user = window.usuarioActual?.();
-            if (user) {
-                resolve(user.uid);
-            } else {
-                resolve(null);
-            }
-        });
+        // MODO DE PRUEBA: Siempre usar usuario demo local
+        console.log('Modo de prueba: usando usuario demo (ID=1)');
+        return 1;
     }
 
     /**

@@ -103,7 +103,8 @@ class GestorRutinas {
                 rutina.id = this.rutinaEnEdicion.id;
             }
 
-            const response = await fetch(`./admin_api/rutinas.php?action=${action}`, {
+            // Usar archivo simple para guardar
+            const response = await fetch(`./guardar_rutina.php`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(rutina)
@@ -135,7 +136,7 @@ class GestorRutinas {
         if (!usuarioId) return;
 
         try {
-            const response = await fetch(`./admin_api/rutinas.php?action=obtener&usuario_id=${usuarioId}`);
+            const response = await fetch(`./obtener_rutinas.php?usuario_id=${usuarioId}`);
             const result = await response.json();
 
             if (result.success) {
@@ -277,7 +278,7 @@ class GestorRutinas {
         if (!rutina) return;
 
         try {
-            const response = await fetch(`./admin_api/progresos.php?action=obtener&rutina_id=${rutinaId}`);
+            const response = await fetch(`./obtener_progresos.php?rutina_id=${rutinaId}`);
             const result = await response.json();
             const progresos = result.data || [];
 
@@ -465,21 +466,9 @@ class GestorRutinas {
      * Obtener ID de usuario
      */
     async obtenerUsuarioId() {
-        // Obtener UID de Firebase
-        const user = window.usuarioActual?.();
-        if (!user || !user.uid) return null;
-
-        // Consultar al backend el ID entero
-        try {
-            const response = await fetch(`./admin_api/users.php?action=obtener_por_uid&uid=${user.uid}`);
-            const result = await response.json();
-            if (result.success && result.data && result.data.id) {
-                return result.data.id; // Este es el ID entero de la tabla usuarios
-            }
-        } catch (error) {
-            console.error('Error obteniendo ID de usuario:', error);
-        }
-        return null;
+        // MODO DE PRUEBA: Siempre usar usuario demo local
+        console.log('Modo de prueba: usando usuario demo (ID=1)');
+        return 1;
     }
 
     /**
