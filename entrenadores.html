@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrenadores | DeporteFit - Entrenamiento Deportivo</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(180deg, #f7fbff 0%, #e3f0ff 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .main-header {
+            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .main-nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .logo i { color: #ffb74d; }
+        .main-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+        .main-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+        .main-menu a:hover, .main-menu a.activo { color: #ffb74d; }
+        .demo-notice {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 1px solid #2196F3;
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+            color: #0d47a1;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        h1 { color: #1976d2; text-align: center; margin: 2rem 0 1rem; }
+        
+        .entrenadores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .entrenador-card {
+            background: #fff;
+            border-radius: 1.1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .entrenador-card:hover { transform: translateY(-5px); }
+        .entrenador-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        }
+        .entrenador-info { padding: 1.5rem; }
+        .entrenador-info h3 {
+            color: #1976d2;
+            margin: 0 0 0.5rem 0;
+        }
+        .especialidad {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .entrenador-info p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .entrenador-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: #f7fbff;
+            border-radius: 8px;
+        }
+        .stat { text-align: center; flex: 1; }
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1976d2;
+        }
+        .stat-label { font-size: 0.75rem; color: #666; }
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #e3f2fd;
+            color: #1976d2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .social-links a:hover {
+            background: #1976d2;
+            color: white;
+        }
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+            color: white;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(25, 118, 210, 0.4);
+        }
+        
+        .form-section {
+            background: #fff;
+            border-radius: 1.1rem;
+            box-shadow: 0 2px 12px rgba(25,118,210,0.07);
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 2rem;
+        }
+        .form-section h2 {
+            color: #1976d2;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 0.5rem;
+            border: 1px solid #b0bec5;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .main-footer {
+            background: #263238;
+            color: white;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h3 { color: #ffb74d; margin-bottom: 1rem; }
+        .footer-section ul { list-style: none; padding: 0; margin: 0; }
+        .footer-section li { margin-bottom: 0.5rem; }
+        .footer-section a { color: #b0bec5; text-decoration: none; }
+        .footer-section a:hover { color: #ffb74d; }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid #37474f;
+            color: #78909c;
+        }
+        
+        @media (max-width: 768px) {
+            .main-nav { flex-direction: column; gap: 1rem; }
+            .main-menu { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="logo"><i class="fas fa-dumbbell"></i><span>DeporteFit</span></div>
+            <ul class="main-menu">
+                <li><a href="cliente.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="entrenadores.html" class="activo">Entrenadores</a></li>
+                <li><a href="planes.html">Planes</a></li>
+                <li><a href="seguimiento_avance.html">Seguimiento</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="demo-notice">
+        <i class="fas fa-info-circle"></i>
+        <strong>Versión Demo Estática</strong> - Esta es una versión de demostración.
+    </div>
+
+    <main class="container">
+        <h1>Nuestro Equipo de Entrenadores</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+            Profesionales certificados con años de experiencia en entrenamiento deportivo
+        </p>
+
+        <div class="entrenadores-grid">
+            <!-- Entrenador 1 -->
+            <div class="entrenador-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Entrenador" class="entrenador-img">
+                <div class="entrenador-info">
+                    <h3>Carlos Mendoza</h3>
+                    <span class="especialidad">Voleibol</span>
+                    <p>Entrenador certificado con más de 10 años de experiencia en voleibol de sala y playa. Ex jugador profesional de la selección nacional.</p>
+                    <div class="entrenador-stats">
+                        <div class="stat">
+                            <div class="stat-value">10+</div>
+                            <div class="stat-label">Años</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">150+</div>
+                            <div class="stat-label">Alumnos</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Títulos</div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <a href="#contactar" class="btn btn-primary">Contactar</a>
+            </div>
+
+            <!-- Entrenador 2 -->
+            <div class="entrenador-card">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Entrenadora" class="entrenador-img">
+                <div class="entrenador-info">
+                    <h3>María Elena Rodríguez</h3>
+                    <span class="especialidad">Nutrición Deportivo</span>
+                    <p>Nutricionista deportiva especializada en rendimiento athletic. Magister en Nutrición y Dietética con enfoque en deportes de alto rendimiento.</p>
+                    <div class="entrenador-stats">
+                        <div class="stat">
+                            <div class="stat-value">8+</div>
+                            <div class="stat-label">Años</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">200+</div>
+                            <div class="stat-label">Clientes</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Certificaciones</div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <a href="#contactar" class="btn btn-primary">Contactar</a>
+            </div>
+
+            <!-- Entrenador 3 -->
+            <div class="entrenador-card">
+                <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Entrenador" class="entrenador-img">
+                <div class="entrenador-info">
+                    <h3>Pedro Sánchez</h3>
+                    <span class="especialidad">Fitness & Musculación</span>
+                    <p>Especialista en entrenamiento de fuerza y condición física. Certificado por ACE y NSCA con experiencia en preparación física para atletas.</p>
+                    <div class="entrenador-stats">
+                        <div class="stat">
+                            <div class="stat-value">12+</div>
+                            <div class="stat-label">Años</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">300+</div>
+                            <div class="stat-label">Alumnos</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Certificaciones</div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <a href="#contactar" class="btn btn-primary">Contactar</a>
+            </div>
+
+            <!-- Entrenador 4 -->
+            <div class="entrenador-card">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Entrenadora" class="entrenador-img">
+                <div class="entrenador-info">
+                    <h3>Ana Lucía Fuentes</h3>
+                    <span class="especialidad">Psicología del Deporte</span>
+                    <p>Psicóloga deportiva especializada en rendimiento mental. Ayuda a atletas a superar bloqueos y alcanzar su máximo potencial psicológico.</p>
+                    <div class="entrenador-stats">
+                        <div class="stat">
+                            <div class="stat-value">6+</div>
+                            <div class="stat-label">Años</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">100+</div>
+                            <div class="stat-label">Atletas</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Maestrías</div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <a href="#contactar" class="btn btn-primary">Contactar</a>
+            </div>
+        </div>
+
+        <!-- Formulario de Contacto -->
+        <section class="form-section" id="contactar">
+            <h2>Contactar un Entrenador</h2>
+            <form id="form-entrenadores">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" placeholder="0991234567">
+                </div>
+                <div class="form-group">
+                    <label for="entrenador">Entrenador de interés:</label>
+                    <select id="entrenador" name="entrenador">
+                        <option value="">Selecciona un entrenador</option>
+                        <option value="carlos">Carlos Mendoza - Voleibol</option>
+                        <option value="maria">María Elena Rodríguez - Nutrición</option>
+                        <option value="pedro">Pedro Sánchez - Fitness</option>
+                        <option value="ana">Ana Lucía Fuentes - Psicología</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>DeporteFit</h3>
+                <p>Tu plataforma de entrenamiento deportivo personalizada.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="cliente.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="planes.html">Planes</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Quito, Ecuador</li>
+                    <li><i class="fas fa-phone"></i> +593 99 123 4567</li>
+                    <li><i class="fas fa-envelope"></i> info@deportefit.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DeporteFit. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('form-entrenadores');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('¡Gracias por tu interés! En una versión completa, esto enviaría tu mensaje al entrenador seleccionado.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

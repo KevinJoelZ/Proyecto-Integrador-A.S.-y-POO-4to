@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes y Precios | DeporteFit - Entrenamiento Deportivo</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(180deg, #f7fbff 0%, #e3f0ff 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .main-header {
+            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .main-nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .logo i { color: #ffb74d; }
+        .main-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+        .main-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+        .main-menu a:hover, .main-menu a.activo { color: #ffb74d; }
+        .demo-notice {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 1px solid #2196F3;
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+            color: #0d47a1;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        h1, h2 { color: #1976d2; }
+        h1 { text-align: center; margin: 2rem 0 1rem; }
+        
+        .planes-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .plan-card {
+            background: #fff;
+            border-radius: 1.1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(25,118,210,0.12);
+            width: 320px;
+            max-width: 100%;
+            transition: transform 0.3s;
+        }
+        .plan-card:hover { transform: translateY(-5px); }
+        .plan-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .plan-content { padding: 1.5rem; text-align: center; }
+        .etiqueta {
+            display: inline-block;
+            background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .plan-content h3 { color: #1976d2; margin: 0.5rem 0; }
+        .plan-precio {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff9800;
+            margin: 0.5rem 0;
+        }
+        .plan-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            text-align: left;
+        }
+        .plan-content li {
+            padding: 0.4rem 0;
+            color: #555;
+        }
+        .plan-content li::before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(25, 118, 210, 0.4);
+        }
+        
+        .detalle-planes, .detalle-precios {
+            margin: 2rem auto;
+            max-width: 1100px;
+        }
+        .detalle-planes h2, .detalle-precios h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .detalle-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .detalle-card {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            box-shadow: 0 4px 12px rgba(25,118,210,0.08);
+        }
+        .detalle-card h3 {
+            color: #1976d2;
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+        .detalle-card p {
+            color: #555;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        
+        .form-section {
+            background: #fff;
+            border-radius: 1.1rem;
+            box-shadow: 0 2px 12px rgba(25,118,210,0.07);
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 2rem;
+        }
+        .form-section h2 {
+            color: #1976d2;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 0.5rem;
+            border: 1px solid #b0bec5;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #2196F3;
+            outline: none;
+        }
+        
+        .faq {
+            background: #fff;
+            border-radius: 1.1rem;
+            box-shadow: 0 2px 12px rgba(25,118,210,0.07);
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .faq-item {
+            background: #f7fbff;
+            border-radius: 1rem;
+            padding: 1.2rem;
+        }
+        .faq-question {
+            background: none;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1976d2;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+        }
+        .faq-question i { color: #ff9800; }
+        .faq-answer {
+            display: none;
+            margin-top: 0.7rem;
+            color: #555;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        .faq-item.active .faq-answer { display: block; }
+        
+        .main-footer {
+            background: #263238;
+            color: white;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h3 { color: #ffb74d; margin-bottom: 1rem; }
+        .footer-section ul { list-style: none; padding: 0; margin: 0; }
+        .footer-section li { margin-bottom: 0.5rem; }
+        .footer-section a { color: #b0bec5; text-decoration: none; }
+        .footer-section a:hover { color: #ffb74d; }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid #37474f;
+            color: #78909c;
+        }
+        
+        @media (max-width: 768px) {
+            .main-nav { flex-direction: column; gap: 1rem; }
+            .main-menu { justify-content: center; }
+            .faq-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="logo"><i class="fas fa-dumbbell"></i><span>DeporteFit</span></div>
+            <ul class="main-menu">
+                <li><a href="cliente.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="entrenadores.html">Entrenadores</a></li>
+                <li><a href="planes.html" class="activo">Planes</a></li>
+                <li><a href="seguimiento_avance.html">Seguimiento</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="demo-notice">
+        <i class="fas fa-info-circle"></i>
+        <strong>Versión Demo Estática</strong> - Esta es una versión de demostración.
+    </div>
+
+    <main class="container">
+        <h1>Planes y Precios</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+            Elige el plan que mejor se adapte a tus objetivos deportivos
+        </p>
+
+        <!-- Planes -->
+        <div class="planes-grid">
+            <!-- Plan Básico -->
+            <div class="plan-card">
+                <img src="imagenes/Basico.jpg" alt="Plan Básico">
+                <div class="plan-content">
+                    <span class="etiqueta">Básico</span>
+                    <h3>Plan Básico</h3>
+                    <p class="plan-precio">$20/mes</p>
+                    <ul>
+                        <li>Acceso a rutinas personalizadas</li>
+                        <li>Seguimiento mensual</li>
+                        <li>Comunidad online</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="seleccionarPlan('Básico', '$20/mes')">Elegir Plan</button>
+                </div>
+            </div>
+
+            <!-- Plan Estándar -->
+            <div class="plan-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=400&q=80" alt="Plan Estándar">
+                <div class="plan-content">
+                    <span class="etiqueta" style="background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);">Estándar</span>
+                    <h3>Plan Estándar</h3>
+                    <p class="plan-precio">$30/mes</p>
+                    <ul>
+                        <li>Todo lo del plan Básico</li>
+                        <li>Asesoría directa con entrenadores</li>
+                        <li>Rutinas avanzadas</li>
+                        <li>Evaluación física trimestral</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="seleccionarPlan('Estándar', '$30/mes')">Elegir Plan</button>
+                </div>
+            </div>
+
+            <!-- Plan Personalizado -->
+            <div class="plan-card">
+                <img src="imagenes/personalizado 2.jpg" alt="Plan Personalizado">
+                <div class="plan-content">
+                    <span class="etiqueta" style="background: linear-gradient(135deg, #9c27b0 0%, #6a1b9a 100%);">Personalizado</span>
+                    <h3>Plan Personalizado</h3>
+                    <p class="plan-precio">$35/mes</p>
+                    <ul>
+                        <li>Todo lo del plan Estándar</li>
+                        <li>Entrenamiento 1 a 1</li>
+                        <li>Seguimiento semanal</li>
+                        <li>Acceso a eventos exclusivos</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="seleccionarPlan('Personalizado', '$35/mes')">Elegir Plan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Descripción de Planes -->
+        <section class="detalle-planes">
+            <h2>Descripción de los Planes</h2>
+            <div class="detalle-grid">
+                <div class="detalle-card">
+                    <h3>Plan Básico</h3>
+                    <p>Ideal para quienes inician en el entrenamiento deportivo y buscan una guía sencilla pero efectiva. Incluye rutinas personalizadas adaptadas a tu nivel, acceso a la comunidad online para resolver dudas y motivarte, y seguimiento mensual.</p>
+                </div>
+                <div class="detalle-card">
+                    <h3>Plan Estándar</h3>
+                    <p>Perfecto para deportistas que desean avanzar más rápido y con mayor soporte. Además de todo lo del plan básico, tendrás asesoría directa con entrenadores certificados, rutinas avanzadas y una evaluación física trimestral.</p>
+                </div>
+                <div class="detalle-card">
+                    <h3>Plan Personalizado</h3>
+                    <p>La opción más completa, pensada para quienes buscan resultados óptimos y atención exclusiva. Incluye entrenamiento 1 a 1 con un entrenador dedicado, seguimiento semanal y acceso a eventos exclusivos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Justificación de Precios -->
+        <section class="detalle-precios">
+            <h2>Justificación de los Precios</h2>
+            <div class="detalle-grid">
+                <div class="detalle-card">
+                    <h3>Plan Básico - $20/mes</h3>
+                    <p>Precio accesible para que cualquier persona pueda comenzar su camino deportivo con asesoría profesional. El costo cubre el acceso a rutinas personalizadas y la comunidad.</p>
+                </div>
+                <div class="detalle-card">
+                    <h3>Plan Estándar - $30/mes</h3>
+                    <p>El precio refleja el valor añadido de la asesoría directa con entrenadores y las rutinas avanzadas. Ideal para quienes buscan un acompañamiento más cercano.</p>
+                </div>
+                <div class="detalle-card">
+                    <h3>Plan Personalizado - $35/mes</h3>
+                    <p>Para quienes desean atención exclusiva y resultados sobresalientes. Incluye sesiones 1 a 1, seguimiento semanal y acceso a eventos exclusivos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulario -->
+        <section class="form-section" id="formulario">
+            <h2>Solicitar Información de Planes</h2>
+            <form id="form-planes">
+                <input type="hidden" id="plan_elegido" value="">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" placeholder="0991234567">
+                </div>
+                <div class="form-group">
+                    <label for="plan">Plan de interés:</label>
+                    <select id="plan" name="plan">
+                        <option value="">Selecciona un plan</option>
+                        <option value="basico">Plan Básico - $20/mes</option>
+                        <option value="estandar">Plan Estándar - $30/mes</option>
+                        <option value="personalizado">Plan Personalizado - $35/mes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Solicitud</button>
+            </form>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq">
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <i class="fas fa-info-circle"></i> ¿Cuál es la diferencia entre los planes?
+                    </button>
+                    <div class="faq-answer">El plan Básico ofrece rutinas y seguimiento mensual. El Estándar incluye asesoría directa y evaluaciones trimestrales. El Personalizado añade entrenamiento 1 a 1 y seguimiento semanal.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <i class="fas fa-exchange-alt"></i> ¿Puedo cambiar de plan?
+                    </button>
+                    <div class="faq-answer">Sí, puedes actualizar o cambiar tu plan en cualquier momento.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <i class="fas fa-credit-card"></i> ¿Cómo se realizan los pagos?
+                    </button>
+                    <div class="faq-answer">Los pagos son mensuales mediante tarjeta de crédito, débito o transferencia bancaria.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <i class="fas fa-clock"></i> ¿Puedo cancelar?
+                    </button>
+                    <div class="faq-answer">Todos los planes son mensuales y puedes cancelar en cualquier momento sin penalidades.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>DeporteFit</h3>
+                <p>Tu plataforma de entrenamiento deportivo personalizada.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="cliente.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="planes.html">Planes</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Quito, Ecuador</li>
+                    <li><i class="fas fa-phone"></i> +593 99 123 4567</li>
+                    <li><i class="fas fa-envelope"></i> info@deportefit.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DeporteFit. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let planSeleccionado = null;
+        
+        function seleccionarPlan(nombre, precio) {
+            planSeleccionado = { nombre, precio };
+            document.getElementById('plan_elegido').value = nombre;
+            document.getElementById('plan').value = nombre.toLowerCase();
+            document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
+            alert('Has seleccionado el ' + nombre + '. Completa el formulario para contactarte.');
+        }
+
+        // FAQ acordeón
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Formulario demo
+            const form = document.getElementById('form-planes');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('¡Gracias por tu interés! En una versión completa, esto enviaría tus datos. Por favor contáctanos por WhatsApp o email para completar tu inscripción.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
